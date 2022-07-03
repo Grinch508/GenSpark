@@ -1,0 +1,38 @@
+package Package1;
+
+import java.util.*;
+
+public class GuessTheNumber {
+    public static void main(String[] args){
+        String yn = "no";
+        String getGuess;
+        Scanner sc = new Scanner(System.in);//Create Scanner
+        System.out.println("\n\n\nHello, What's your name?");
+        String getName = sc.nextLine();//Get name
+        int ans = (int)(Math.random() * 20);
+        int chances = 0;
+        do{
+            try{
+                System.out.println("\nWell " + getName + ", I am thinking of a number between 1 and 20."+
+                "\nTake a guess.");
+                    
+                getGuess = sc.nextLine();
+            
+                if(getGuess==String.valueOf(ans)){
+                    System.out.println("Congatulations " + getName + " You Won!!!\nWould you like to play again?"+
+                                        "\t[yes]\t[no]");
+                }else{
+                        System.out.println("Wrong.\nTry Again");
+                        chances +=1;
+                }
+             }catch(Exception e){
+                System.out.println("An error occured: "+e);
+            }
+        }while(chances!=6);
+        System.out.println("YOU LOSE\nWould you like to play again?\t[yes]\t[no]");
+        yn = sc.nextLine();
+        if(yn.equals("no")){
+            sc.close();
+        }
+    }
+}
